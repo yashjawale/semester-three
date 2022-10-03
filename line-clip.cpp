@@ -28,7 +28,7 @@ int main() {
     cin >> p1.x >> p1.y;
     cout << "\nEnter x2 and y2: \n";
     cin >> p2.x >> p2.y;
-    initgraph(&gd, &gm, "");
+    initgraph(&gd, &gm, NULL);
     lc.drawwindow();
     delay(2000);
     lc.drawline(p1, p2);
@@ -128,7 +128,7 @@ int Lineclip::visibility(Coordinate p1, Coordinate p2) {
 
 Coordinate Lineclip::resetendpt(Coordinate p1, Coordinate p2) {
     Coordinate temp;
-    int x, y, l;
+    int x, y, i;
     float m, k;
     if (p1.code[3] == '1') {
         x = 150;
@@ -141,7 +141,7 @@ Coordinate Lineclip::resetendpt(Coordinate p1, Coordinate p2) {
         k = (p1.y + (m * (x-p1.x)));
         temp.y=k;
         temp.x=x;
-        for (i-0; i<4;i++) {
+        for (i=0; i<4;i++) {
             temp.code[i] = p1.code[i];
         }
         if (temp.y<=350 && temp.y>=100) {
@@ -161,10 +161,10 @@ Coordinate Lineclip::resetendpt(Coordinate p1, Coordinate p2) {
         temp.y=y;
 
         for (i=0; i<4; i++) {
-            temp.code[i] = p1.code[is];
+            temp.code[i] = p1.code[i];
         }
         return(temp);
     } else {
-        return (p1);s
+        return (p1);
     }
 }
